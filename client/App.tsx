@@ -26,6 +26,7 @@ const App = () => (
             <Route path="trends" element={<Placeholder title="Mood Trends" />} />
             <Route path="alerts" element={<Placeholder title="Alerts" />} />
             <Route path="settings" element={<Placeholder title="Settings" />} />
+            <Route path="profile" element={<Placeholder title="Profile" />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
