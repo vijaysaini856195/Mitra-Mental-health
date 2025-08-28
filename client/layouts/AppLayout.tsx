@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -27,29 +27,36 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import {
-  Bell,
+  Activity,
+  AlertTriangle,
   Brain,
   LayoutDashboard,
   LineChart,
   LogOut,
-  NotebookText,
+  MessageCircle,
   Search,
   Settings,
+  ShieldCheck,
+  Stars,
+  TrendingUp,
+  Users,
 } from "lucide-react";
-import { useMemo } from "react";
+import ThemeToggle from "@/components/mitra/ThemeToggle";
+import NotificationBell from "@/components/mitra/NotificationBell";
 
 const navItems = [
-  { to: "/", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/journals", label: "Journals", icon: NotebookText },
-  { to: "/trends", label: "Mood Trends", icon: LineChart },
-  { to: "/alerts", label: "Alerts", icon: Bell },
-  { to: "/settings", label: "Settings", icon: Settings },
+  { to: "/app/parent", label: "Parent Dashboard", icon: LayoutDashboard },
+  { to: "/app/parent/risk", label: "Risk Analysis", icon: TrendingUp },
+  { to: "/app/student/chat", label: "Student Chat", icon: MessageCircle },
+  { to: "/app/student/mood", label: "Mood Tracker", icon: LineChart },
+  { to: "/app/coaching", label: "Parent Coaching", icon: Users },
+  { to: "/app/reports", label: "Reports", icon: Activity },
+  { to: "/app/testimonials", label: "Testimonials", icon: Stars },
+  { to: "/app/crisis", label: "Crisis Support", icon: AlertTriangle },
+  { to: "/app/settings", label: "Settings", icon: Settings },
 ];
 
 export default function AppLayout() {
-  const location = useLocation();
-  const activePath = useMemo(() => location.pathname, [location.pathname]);
-
   return (
     <SidebarProvider>
       <Sidebar variant="inset" collapsible="icon">
@@ -58,12 +65,12 @@ export default function AppLayout() {
             to="/"
             className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-sidebar-accent transition-colors"
           >
-            <div className="size-8 grid place-items-center rounded-md bg-gradient-to-br from-brand-purple/90 via-brand-blue/80 to-brand-green/80 shadow-sm">
+            <div className="size-8 grid place-items-center rounded-md bg-gradient-to-br from-[#667eea] via-[#6b6edc] to-[#764ba2] shadow-sm">
               <Brain className="size-5 text-white" />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-sm font-semibold">MoodMap AI</span>
-              <span className="text-[10px] text-muted-foreground">Journaling</span>
+              <span className="text-sm font-semibold">MITRA</span>
+              <span className="text-[10px] text-muted-foreground">Mental Health</span>
             </div>
           </Link>
         </SidebarHeader>
@@ -91,7 +98,7 @@ export default function AppLayout() {
         </SidebarContent>
         <SidebarSeparator />
         <SidebarFooter>
-          <Button variant="outline" className="w-full justify-start" onClick={() => alert("Logged out")}> 
+          <Button variant="outline" className="w-full justify-start" onClick={() => alert("Logged out")}>
             <LogOut className="mr-2 size-4" /> Logout
           </Button>
         </SidebarFooter>
@@ -104,9 +111,11 @@ export default function AppLayout() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
               <Input
                 className="pl-9 h-10 rounded-full bg-muted/40 border-transparent focus-visible:ring-brand-blue placeholder:text-muted-foreground"
-                placeholder="Search journal entries..."
+                placeholder="Search..."
               />
             </div>
+            <NotificationBell />
+            <ThemeToggle />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="rounded-full">
@@ -119,10 +128,7 @@ export default function AppLayout() {
                 <DropdownMenuLabel>Signed in as vijay</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link to="/profile">Profile</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to="/settings">Settings</Link>
+                  <Link to="/app/settings">Settings</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => alert("Logged out")}>Logout</DropdownMenuItem>
@@ -130,7 +136,7 @@ export default function AppLayout() {
             </DropdownMenu>
           </div>
         </header>
-        <main className={cn("flex-1 p-4 md:p-6", "bg-gradient-to-b from-background to-muted/40")}> 
+        <main className={cn("flex-1 p-4 md:p-6", "bg-gradient-to-b from-background to-muted/40")}>
           <Outlet />
         </main>
         <AIAssistantWidget />
