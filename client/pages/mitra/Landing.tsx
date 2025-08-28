@@ -1,4 +1,3 @@
-import React from "react";
 import React, { useEffect, useRef, useState } from "react";
 import Counter from "@/components/mitra/Counter";
 import { Button } from "@/components/ui/button";
