@@ -32,7 +32,7 @@ import {
   LayoutDashboard,
   LineChart,
   LogOut,
-  NotebookPen,
+  NotebookText,
   Search,
   Settings,
 } from "lucide-react";
@@ -40,7 +40,7 @@ import { useMemo } from "react";
 
 const navItems = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/journals", label: "Journals", icon: NotebookPen },
+  { to: "/journals", label: "Journals", icon: NotebookText },
   { to: "/trends", label: "Mood Trends", icon: LineChart },
   { to: "/alerts", label: "Alerts", icon: Bell },
   { to: "/settings", label: "Settings", icon: Settings },
