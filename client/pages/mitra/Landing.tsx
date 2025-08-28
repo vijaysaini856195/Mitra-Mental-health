@@ -34,7 +34,7 @@ export default function Landing() {
         <section className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
-              Every 28 seconds, India loses a student.{" "}
+              Every one hours, India loses a student.
               <span className="block mt-2">MITRA saves them.</span>
             </h1>
             <p className="mt-4 text-white/90">
