@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { TrendingUp, NotebookPen, Smile, CalendarClock } from "lucide-react";
+import { TrendingUp, NotebookText, Smile, CalendarClock } from "lucide-react";
 import {
   LineChart as ReLineChart,
   Line,
