@@ -1,18 +1,8 @@
-<<<<<<< HEAD
-import React from "react";
-=======
 import React, { useEffect, useRef, useState } from "react";
->>>>>>> 5772a10b60312ea028f236f97fff3baf01d6df00
 import Counter from "@/components/mitra/Counter";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ShieldCheck, Star, Users } from "lucide-react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-
-export default function Landing() {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-[#667eea] via-[#6e63dc] to-[#764ba2] text-white">
-=======
 import Cursor from "@/components/mitra/interactive/Cursor";
 import Magnetic from "@/components/mitra/interactive/Magnetic";
 import GlitchCounter from "@/components/mitra/interactive/GlitchCounter";
@@ -40,7 +30,6 @@ export default function Landing() {
       }}
     >
       <Cursor />
->>>>>>> 5772a10b60312ea028f236f97fff3baf01d6df00
       <header className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
         <div className="text-xl font-extrabold tracking-tight">MITRA</div>
         <nav className="hidden md:flex items-center gap-6 text-sm/relaxed">
@@ -54,16 +43,6 @@ export default function Landing() {
             Testimonials
           </a>
         </nav>
-<<<<<<< HEAD
-        <Link to="/app/parent">
-          <Button
-            variant="secondary"
-            className="bg-white text-[#5b5bd6] hover:bg-white/90"
-          >
-            Open App
-          </Button>
-        </Link>
-=======
         <Magnetic>
           <Link to="/app/parent">
             <Button
@@ -75,25 +54,18 @@ export default function Landing() {
             </Button>
           </Link>
         </Magnetic>
->>>>>>> 5772a10b60312ea028f236f97fff3baf01d6df00
       </header>
 
       <main className="max-w-6xl mx-auto px-4 py-10">
         <section className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
-<<<<<<< HEAD
-              Every 28 seconds, India loses a student.{" "}
-              <span className="block mt-2">MITRA saves them.</span>
-            </h1>
-=======
-              Every one hours, India loses a student.
+              Every 28 seconds, India loses a student.
               <span className="block mt-2">MITRA saves them.</span>
             </h1>
             <div className="mt-2 text-sm">
               A student lost in: <GlitchCounter start={28} />
             </div>
->>>>>>> 5772a10b60312ea028f236f97fff3baf01d6df00
             <p className="mt-4 text-white/90">
               Early detection. Compassionate support. Parent coaching. Built
               with clinicians and validated by NIMHANS.
@@ -200,7 +172,7 @@ function Stat({ label, value }: { label: string; value: React.ReactNode }) {
 
 function Badge({ text }: { text: string }) {
   return (
-    <div className="px-3 py-1 rounded-full bg-white/10 text-white/90 border border-white/20 text-xs inline-flex items-center gap-2">
+    <div className="px-3 py-1 rounded-full bg-white/10 text-white/90 border white/20 text-xs inline-flex items-center gap-2">
       <CheckCircle className="size-3" /> {text}
     </div>
   );
@@ -231,7 +203,7 @@ function Testimonial({
   return (
     <div className="rounded-2xl backdrop-blur bg-white/10 p-5 border border-white/20 shadow-xl">
       <div className="text-sm/relaxed">{name}'s Journey</div>
-      <div className="mt-1 text-white/90">“{quote}”</div>
+      <div className="mt-1 text white/90">“{quote}”</div>
       <div className="mt-3 text-xs text-white/70">
         Before: {before} • After: {after}
       </div>

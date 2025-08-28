@@ -4,15 +4,6 @@ import { Button } from "@/components/ui/button";
 
 export default function SOSButton() {
   return (
-<<<<<<< HEAD
-    <div className="fixed bottom-5 right-5 z-40">
-      <Button
-        onClick={() => (window.location.href = "/app/crisis")}
-        className="rounded-full bg-red-600 hover:bg-red-700 text-white shadow-lg"
-        size="lg"
-      >
-        <AlertTriangle className="mr-2" /> SOS
-=======
     <div className="fixed bottom-5 right-5 z-40 group" data-cursor="crisis">
       <div className="absolute -inset-6 rounded-full bg-red-500/20 blur-xl opacity-60 group-hover:animate-pulse" />
       <Button
@@ -26,7 +17,6 @@ export default function SOSButton() {
         <span className="group-hover:opacity-0 transition-opacity flex items-center">
           <AlertTriangle className="mr-2" /> SOS
         </span>
->>>>>>> 5772a10b60312ea028f236f97fff3baf01d6df00
       </Button>
     </div>
   );
