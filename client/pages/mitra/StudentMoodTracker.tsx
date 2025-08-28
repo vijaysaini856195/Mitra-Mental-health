@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 const EMOJIS = [
   { e: "😊", score: 5, label: "Great" },
@@ -13,7 +12,12 @@ const EMOJIS = [
 export default function StudentMoodTracker() {
   const daysInMonth = 30;
   const [selected, setSelected] = useState<number | null>(null);
-  const data = useMemo(() => Array.from({ length: daysInMonth }).map((_, i) => ({ d: i + 1, score: Math.max(1, Math.min(5, Math.round(2 + Math.sin(i / 3) * 1.5 + (i > 20 ? 1 : 0))))) })), []);
+  const data = useMemo(() => {
+    return Array.from({ length: daysInMonth }).map((_, i) => ({
+      d: i + 1,
+      score: Math.max(1, Math.min(5, Math.round(2 + Math.sin(i / 3) * 1.5 + (i > 20 ? 1 : 0)))),
+    }));
+  }, [daysInMonth]);
 
   return (
     <div className="space-y-6">
