@@ -12,7 +12,12 @@ export default function ThemeToggle() {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
   return (
-    <Button variant="ghost" size="icon" className="rounded-full" onClick={() => setDark((v) => !v)}>
+    <Button
+      variant="ghost"
+      size="icon"
+      className="rounded-full"
+      onClick={() => setDark((v) => !v)}
+    >
       {dark ? <Sun className="size-5" /> : <Moon className="size-5" />}
       <span className="sr-only">Toggle theme</span>
     </Button>

@@ -14,22 +14,36 @@ export default function ParentCoaching() {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">Parent Coaching</h1>
+        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
+          Parent Coaching
+        </h1>
       </header>
 
       <section className="grid grid-cols-1 lg:grid-cols-[1fr,2fr] gap-6">
         <Card>
-          <CardHeader><CardTitle className="text-base">What's happening?</CardTitle></CardHeader>
+          <CardHeader>
+            <CardTitle className="text-base">What's happening?</CardTitle>
+          </CardHeader>
           <CardContent className="space-y-2">
             {scenarios.map((s) => (
-              <button key={s} onClick={() => setSel(s)} className={`w-full text-left px-3 py-2 rounded-md border ${sel === s ? 'bg-muted' : 'bg-background'}`}>{s}</button>
+              <button
+                key={s}
+                onClick={() => setSel(s)}
+                className={`w-full text-left px-3 py-2 rounded-md border ${sel === s ? "bg-muted" : "bg-background"}`}
+              >
+                {s}
+              </button>
             ))}
           </CardContent>
         </Card>
         <Card>
-          <CardHeader><CardTitle className="text-base">AI Recommendations</CardTitle></CardHeader>
+          <CardHeader>
+            <CardTitle className="text-base">AI Recommendations</CardTitle>
+          </CardHeader>
           <CardContent className="space-y-4 text-sm">
-            <div><b>Current situation:</b> Arjun showing signs of depression</div>
+            <div>
+              <b>Current situation:</b> Arjun showing signs of depression
+            </div>
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <div className="font-medium">Do's</div>

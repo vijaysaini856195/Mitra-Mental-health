@@ -8,7 +8,12 @@ type Props = {
   showZones?: boolean;
 };
 
-export default function Gauge({ value, size = 160, label, showZones = true }: Props) {
+export default function Gauge({
+  value,
+  size = 160,
+  label,
+  showZones = true,
+}: Props) {
   const [anim, setAnim] = useState(0);
   useEffect(() => {
     const target = Math.max(0, Math.min(10, value));
@@ -41,9 +46,19 @@ export default function Gauge({ value, size = 160, label, showZones = true }: Pr
   const dash = circumference * percent;
 
   return (
-    <div className="inline-grid place-items-center" style={{ width: size, height: size }}>
+    <div
+      className="inline-grid place-items-center"
+      style={{ width: size, height: size }}
+    >
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-        <circle cx={cx} cy={cy} r={r} fill="none" stroke="hsl(var(--muted))" strokeWidth={14} />
+        <circle
+          cx={cx}
+          cy={cy}
+          r={r}
+          fill="none"
+          stroke="hsl(var(--muted))"
+          strokeWidth={14}
+        />
         {showZones && (
           <g>
             <Arc cx={cx} cy={cy} r={r} start={0} end={0.3} color="#22c55e" />
@@ -64,14 +79,39 @@ export default function Gauge({ value, size = 160, label, showZones = true }: Pr
         />
       </svg>
       <div className="-mt-24 text-center">
-        <div className={cn("text-4xl font-bold tabular-nums", zone === "red" && "text-red-500", zone === "yellow" && "text-yellow-500", zone === "green" && "text-green-500")}>{anim.toFixed(1)}</div>
-        <div className="text-xs text-muted-foreground">{label ?? "Risk Score"}</div>
+        <div
+          className={cn(
+            "text-4xl font-bold tabular-nums",
+            zone === "red" && "text-red-500",
+            zone === "yellow" && "text-yellow-500",
+            zone === "green" && "text-green-500",
+          )}
+        >
+          {anim.toFixed(1)}
+        </div>
+        <div className="text-xs text-muted-foreground">
+          {label ?? "Risk Score"}
+        </div>
       </div>
     </div>
   );
 }
 
-function Arc({ cx, cy, r, start, end, color }: { cx: number; cy: number; r: number; start: number; end: number; color: string }) {
+function Arc({
+  cx,
+  cy,
+  r,
+  start,
+  end,
+  color,
+}: {
+  cx: number;
+  cy: number;
+  r: number;
+  start: number;
+  end: number;
+  color: string;
+}) {
   const a0 = (start * 360 - 90) * (Math.PI / 180);
   const a1 = (end * 360 - 90) * (Math.PI / 180);
   const x0 = cx + r * Math.cos(a0);

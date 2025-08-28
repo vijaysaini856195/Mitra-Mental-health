@@ -10,27 +10,58 @@ export default function Landing() {
       <header className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
         <div className="text-xl font-extrabold tracking-tight">MITRA</div>
         <nav className="hidden md:flex items-center gap-6 text-sm/relaxed">
-          <a href="#features" className="opacity-80 hover:opacity-100">Features</a>
-          <a href="#trust" className="opacity-80 hover:opacity-100">Trust</a>
-          <a href="#testimonials" className="opacity-80 hover:opacity-100">Testimonials</a>
+          <a href="#features" className="opacity-80 hover:opacity-100">
+            Features
+          </a>
+          <a href="#trust" className="opacity-80 hover:opacity-100">
+            Trust
+          </a>
+          <a href="#testimonials" className="opacity-80 hover:opacity-100">
+            Testimonials
+          </a>
         </nav>
-        <Link to="/app/parent"><Button variant="secondary" className="bg-white text-[#5b5bd6] hover:bg-white/90">Open App</Button></Link>
+        <Link to="/app/parent">
+          <Button
+            variant="secondary"
+            className="bg-white text-[#5b5bd6] hover:bg-white/90"
+          >
+            Open App
+          </Button>
+        </Link>
       </header>
 
       <main className="max-w-6xl mx-auto px-4 py-10">
         <section className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
-              Every 28 seconds, India loses a student. <span className="block mt-2">MITRA saves them.</span>
+              Every 28 seconds, India loses a student.{" "}
+              <span className="block mt-2">MITRA saves them.</span>
             </h1>
-            <p className="mt-4 text-white/90">Early detection. Compassionate support. Parent coaching. Built with clinicians and validated by NIMHANS.</p>
+            <p className="mt-4 text-white/90">
+              Early detection. Compassionate support. Parent coaching. Built
+              with clinicians and validated by NIMHANS.
+            </p>
             <div className="mt-6 flex gap-3 flex-wrap">
-              <Link to="/app/parent"><Button className="bg-gradient-to-r from-[#667eea] to-[#764ba2]">I'm a Parent</Button></Link>
-              <Link to="/app/student/chat"><Button variant="secondary" className="bg-white/20 hover:bg-white/30 text-white">I'm a Student</Button></Link>
+              <Link to="/app/parent">
+                <Button className="bg-gradient-to-r from-[#667eea] to-[#764ba2]">
+                  I'm a Parent
+                </Button>
+              </Link>
+              <Link to="/app/student/chat">
+                <Button
+                  variant="secondary"
+                  className="bg-white/20 hover:bg-white/30 text-white"
+                >
+                  I'm a Student
+                </Button>
+              </Link>
             </div>
             <div className="mt-6 text-sm/relaxed grid grid-cols-2 gap-4 md:max-w-md">
               <Stat label="Lives saved" value={<Counter to={347} />} />
-              <Stat label="Early detection" value={<span>6 weeks sooner</span>} />
+              <Stat
+                label="Early detection"
+                value={<span>6 weeks sooner</span>}
+              />
               <Stat label="Cost" value={<span>₹99 vs ₹2000</span>} />
               <Stat label="Students lost/year" value={<span>13,089</span>} />
             </div>
@@ -53,17 +84,43 @@ export default function Landing() {
         </section>
 
         <section id="trust" className="mt-14 grid md:grid-cols-3 gap-6">
-          <TrustCard icon={<ShieldCheck className="text-emerald-300" />} title="NIMHANS validated" />
-          <TrustCard icon={<Users className="text-blue-200" />} title="50K+ users" />
-          <TrustCard icon={<Star className="text-yellow-300" />} title="4.8/5 rating" />
+          <TrustCard
+            icon={<ShieldCheck className="text-emerald-300" />}
+            title="NIMHANS validated"
+          />
+          <TrustCard
+            icon={<Users className="text-blue-200" />}
+            title="50K+ users"
+          />
+          <TrustCard
+            icon={<Star className="text-yellow-300" />}
+            title="4.8/5 rating"
+          />
         </section>
 
         <section id="testimonials" className="mt-14">
-          <h2 className="text-2xl font-bold">"3 Lives Saved, 10,000+ Helped"</h2>
+          <h2 className="text-2xl font-bold">
+            "3 Lives Saved, 10,000+ Helped"
+          </h2>
           <div className="mt-6 grid md:grid-cols-3 gap-6">
-            <Testimonial name="Arjun" quote="MITRA understood when nobody else did" before="2.8" after="8.9" />
-            <Testimonial name="Sara" quote="Felt seen and safe" before="3.5" after="7.6" />
-            <Testimonial name="Kabir" quote="Got my life back on track" before="4.1" after="8.2" />
+            <Testimonial
+              name="Arjun"
+              quote="MITRA understood when nobody else did"
+              before="2.8"
+              after="8.9"
+            />
+            <Testimonial
+              name="Sara"
+              quote="Felt seen and safe"
+              before="3.5"
+              after="7.6"
+            />
+            <Testimonial
+              name="Kabir"
+              quote="Got my life back on track"
+              before="4.1"
+              after="8.2"
+            />
           </div>
         </section>
       </main>
@@ -95,18 +152,32 @@ function Badge({ text }: { text: string }) {
 function TrustCard({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
     <div className="rounded-2xl backdrop-blur bg-white/10 p-5 border border-white/20 shadow-xl flex items-center gap-3">
-      <div className="size-10 grid place-items-center rounded-full bg-white/10">{icon}</div>
+      <div className="size-10 grid place-items-center rounded-full bg-white/10">
+        {icon}
+      </div>
       <div className="font-medium">{title}</div>
     </div>
   );
 }
 
-function Testimonial({ name, quote, before, after }: { name: string; quote: string; before: string; after: string }) {
+function Testimonial({
+  name,
+  quote,
+  before,
+  after,
+}: {
+  name: string;
+  quote: string;
+  before: string;
+  after: string;
+}) {
   return (
     <div className="rounded-2xl backdrop-blur bg-white/10 p-5 border border-white/20 shadow-xl">
       <div className="text-sm/relaxed">{name}'s Journey</div>
       <div className="mt-1 text-white/90">“{quote}”</div>
-      <div className="mt-3 text-xs text-white/70">Before: {before} • After: {after}</div>
+      <div className="mt-3 text-xs text-white/70">
+        Before: {before} • After: {after}
+      </div>
     </div>
   );
 }

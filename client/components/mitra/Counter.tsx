@@ -1,8 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 
-type Props = { from?: number; to: number; duration?: number; formatter?: (n: number) => string };
+type Props = {
+  from?: number;
+  to: number;
+  duration?: number;
+  formatter?: (n: number) => string;
+};
 
-export default function Counter({ from = 0, to, duration = 2000, formatter }: Props) {
+export default function Counter({
+  from = 0,
+  to,
+  duration = 2000,
+  formatter,
+}: Props) {
   const [n, setN] = useState(from);
   const startRef = useRef<number | null>(null);
   useEffect(() => {

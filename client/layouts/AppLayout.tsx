@@ -70,7 +70,9 @@ export default function AppLayout() {
             </div>
             <div className="flex flex-col leading-none">
               <span className="text-sm font-semibold">MITRA</span>
-              <span className="text-[10px] text-muted-foreground">Mental Health</span>
+              <span className="text-[10px] text-muted-foreground">
+                Mental Health
+              </span>
             </div>
           </Link>
         </SidebarHeader>
@@ -82,7 +84,11 @@ export default function AppLayout() {
                   <SidebarMenuItem key={to}>
                     <NavLink to={to} className="block">
                       {({ isActive }) => (
-                        <SidebarMenuButton asChild isActive={isActive} tooltip={label}>
+                        <SidebarMenuButton
+                          asChild
+                          isActive={isActive}
+                          tooltip={label}
+                        >
                           <span className="flex items-center gap-2">
                             <Icon className="size-4" />
                             <span>{label}</span>
@@ -98,7 +104,11 @@ export default function AppLayout() {
         </SidebarContent>
         <SidebarSeparator />
         <SidebarFooter>
-          <Button variant="outline" className="w-full justify-start" onClick={() => alert("Logged out")}>
+          <Button
+            variant="outline"
+            className="w-full justify-start"
+            onClick={() => alert("Logged out")}
+          >
             <LogOut className="mr-2 size-4" /> Logout
           </Button>
         </SidebarFooter>
@@ -131,12 +141,19 @@ export default function AppLayout() {
                   <Link to="/app/settings">Settings</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => alert("Logged out")}>Logout</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => alert("Logged out")}>
+                  Logout
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
         </header>
-        <main className={cn("flex-1 p-4 md:p-6", "bg-gradient-to-b from-background to-muted/40")}>
+        <main
+          className={cn(
+            "flex-1 p-4 md:p-6",
+            "bg-gradient-to-b from-background to-muted/40",
+          )}
+        >
           <Outlet />
         </main>
         <AIAssistantWidget />
@@ -159,9 +176,14 @@ function AIAssistantWidget() {
           </Button>
         </summary>
         <div className="mt-3 w-[22rem] md:w-[26rem] rounded-xl border bg-background shadow-xl overflow-hidden">
-          <div className="px-4 py-3 border-b bg-muted/40 text-sm font-medium">AI Assistant</div>
+          <div className="px-4 py-3 border-b bg-muted/40 text-sm font-medium">
+            AI Assistant
+          </div>
           <div className="p-4 space-y-3">
-            <div className="text-xs text-muted-foreground">Talk or type your mood. The assistant suggests reflections and tags emotions.</div>
+            <div className="text-xs text-muted-foreground">
+              Talk or type your mood. The assistant suggests reflections and
+              tags emotions.
+            </div>
             <textarea
               className="w-full h-28 resize-none rounded-md border bg-background p-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-purple"
               placeholder="How are you feeling right now?"

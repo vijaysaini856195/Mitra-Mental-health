@@ -34,15 +34,37 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       <header className="flex flex-col gap-2">
-        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">Welcome back, Vijay</h1>
-        <p className="text-muted-foreground">“Every feeling is a messenger. Listen, then let it pass.”</p>
+        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
+          Welcome back, Vijay
+        </h1>
+        <p className="text-muted-foreground">
+          “Every feeling is a messenger. Listen, then let it pass.”
+        </p>
       </header>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
-        <StatCard title="Mood Score (today)" value="7.9/10" icon={<Smile className="text-brand-purple" />} trend="+0.4" />
-        <StatCard title="Journals Logged (this week)" value="12" icon={<NotebookText className="text-brand-blue" />} trend="+3" />
-        <StatCard title="Positive vs Negative" value="68% / 32%" icon={<TrendingUp className="text-brand-green" />} />
-        <StatCard title="Upcoming Check-in" value="Thu 4:30 PM" icon={<CalendarClock className="text-primary" />} />
+        <StatCard
+          title="Mood Score (today)"
+          value="7.9/10"
+          icon={<Smile className="text-brand-purple" />}
+          trend="+0.4"
+        />
+        <StatCard
+          title="Journals Logged (this week)"
+          value="12"
+          icon={<NotebookText className="text-brand-blue" />}
+          trend="+3"
+        />
+        <StatCard
+          title="Positive vs Negative"
+          value="68% / 32%"
+          icon={<TrendingUp className="text-brand-green" />}
+        />
+        <StatCard
+          title="Upcoming Check-in"
+          value="Thu 4:30 PM"
+          icon={<CalendarClock className="text-primary" />}
+        />
       </section>
 
       <section className="grid grid-cols-1 xl:grid-cols-2 gap-4">
@@ -53,10 +75,27 @@ export default function Dashboard() {
           <CardContent className="h-64 md:h-72">
             <ResponsiveContainer width="100%" height="100%">
               <ReLineChart data={lineData}>
-                <XAxis dataKey="day" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
+                <XAxis
+                  dataKey="day"
+                  stroke="hsl(var(--muted-foreground))"
+                  fontSize={12}
+                  tickLine={false}
+                  axisLine={false}
+                />
                 <YAxis hide domain={[0, 100]} />
-                <Tooltip contentStyle={{ borderRadius: 8, border: "1px solid hsl(var(--border))" }} />
-                <Line type="monotone" dataKey="mood" stroke="hsl(var(--brand-purple))" strokeWidth={3} dot={false} />
+                <Tooltip
+                  contentStyle={{
+                    borderRadius: 8,
+                    border: "1px solid hsl(var(--border))",
+                  }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="mood"
+                  stroke="hsl(var(--brand-purple))"
+                  strokeWidth={3}
+                  dot={false}
+                />
               </ReLineChart>
             </ResponsiveContainer>
           </CardContent>
@@ -68,12 +107,24 @@ export default function Dashboard() {
           <CardContent className="h-64 md:h-72">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={pieData} dataKey="value" nameKey="name" innerRadius={60} outerRadius={90} paddingAngle={4}>
+                <Pie
+                  data={pieData}
+                  dataKey="value"
+                  nameKey="name"
+                  innerRadius={60}
+                  outerRadius={90}
+                  paddingAngle={4}
+                >
                   {pieData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip contentStyle={{ borderRadius: 8, border: "1px solid hsl(var(--border))" }} />
+                <Tooltip
+                  contentStyle={{
+                    borderRadius: 8,
+                    border: "1px solid hsl(var(--border))",
+                  }}
+                />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
@@ -97,7 +148,10 @@ export default function Dashboard() {
             <Insight text="Increased anxiety in evenings" tone="warn" />
             <Insight text="Low mood trend in last 3 days" tone="alert" />
             <Insight text="Higher positivity after morning walks" tone="good" />
-            <Insight text="Better sleep correlates with calmer tone" tone="info" />
+            <Insight
+              text="Better sleep correlates with calmer tone"
+              tone="info"
+            />
           </CardContent>
         </Card>
       </section>
@@ -105,12 +159,24 @@ export default function Dashboard() {
   );
 }
 
-function StatCard({ title, value, trend, icon }: { title: string; value: string; trend?: string; icon: React.ReactNode }) {
+function StatCard({
+  title,
+  value,
+  trend,
+  icon,
+}: {
+  title: string;
+  value: string;
+  trend?: string;
+  icon: React.ReactNode;
+}) {
   return (
     <Card className="transition-shadow hover:shadow-md">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <p className="text-sm font-medium text-muted-foreground">{title}</p>
-        <div className="size-9 grid place-items-center rounded-md bg-muted/60">{icon}</div>
+        <div className="size-9 grid place-items-center rounded-md bg-muted/60">
+          {icon}
+        </div>
       </CardHeader>
       <CardContent>
         <div className="flex items-baseline gap-2">
@@ -125,7 +191,9 @@ function StatCard({ title, value, trend, icon }: { title: string; value: string;
 function HeatmapGrid({ data }: { data: number[][] }) {
   return (
     <div className="space-y-3">
-      <div className="text-sm text-muted-foreground">Emotional intensity over time</div>
+      <div className="text-sm text-muted-foreground">
+        Emotional intensity over time
+      </div>
       <div className="grid grid-cols-14 gap-1">
         {data.flatMap((row, r) =>
           row.map((v, c) => (
@@ -174,15 +242,21 @@ function generateHeatmap() {
   return grid;
 }
 
-function Insight({ text, tone }: { text: string; tone: "warn" | "alert" | "good" | "info" }) {
+function Insight({
+  text,
+  tone,
+}: {
+  text: string;
+  tone: "warn" | "alert" | "good" | "info";
+}) {
   const toneClass =
     tone === "good"
       ? "border-l-4 border-brand-green/70"
       : tone === "warn"
-      ? "border-l-4 border-brand-purple/60"
-      : tone === "alert"
-      ? "border-l-4 border-destructive/70"
-      : "border-l-4 border-brand-blue/60";
+        ? "border-l-4 border-brand-purple/60"
+        : tone === "alert"
+          ? "border-l-4 border-destructive/70"
+          : "border-l-4 border-brand-blue/60";
 
   return (
     <div className={cn("rounded-md p-3 bg-muted/50", toneClass)}>
