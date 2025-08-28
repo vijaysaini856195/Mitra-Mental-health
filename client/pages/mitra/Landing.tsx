@@ -1,12 +1,31 @@
 import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Counter from "@/components/mitra/Counter";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ShieldCheck, Star, Users } from "lucide-react";
 import { Link } from "react-router-dom";
+import Cursor from "@/components/mitra/interactive/Cursor";
+import Magnetic from "@/components/mitra/interactive/Magnetic";
+import GlitchCounter from "@/components/mitra/interactive/GlitchCounter";
 
 export default function Landing() {
+  const [bgPos, setBgPos] = useState({ x: 50, y: 50 });
+  const frame = useRef(0);
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      cancelAnimationFrame(frame.current as any);
+      frame.current = requestAnimationFrame(() => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        setBgPos({ x, y });
+      });
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, []);
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#667eea] via-[#6e63dc] to-[#764ba2] text-white">
+    <div className="min-h-screen relative text-white" style={{ background: `radial-gradient(circle at ${bgPos.x}% ${bgPos.y}%, #667eea, #764ba2)` }}>
+      <Cursor />
       <header className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
         <div className="text-xl font-extrabold tracking-tight">MITRA</div>
         <nav className="hidden md:flex items-center gap-6 text-sm/relaxed">
@@ -20,14 +39,17 @@ export default function Landing() {
             Testimonials
           </a>
         </nav>
-        <Link to="/app/parent">
-          <Button
-            variant="secondary"
-            className="bg-white text-[#5b5bd6] hover:bg-white/90"
-          >
-            Open App
-          </Button>
-        </Link>
+        <Magnetic>
+          <Link to="/app/parent">
+            <Button
+              variant="secondary"
+              className="bg-white text-[#5b5bd6] hover:bg-white/90"
+              data-cursor="button"
+            >
+              Open App
+            </Button>
+          </Link>
+        </Magnetic>
       </header>
 
       <main className="max-w-6xl mx-auto px-4 py-10">
@@ -37,6 +59,7 @@ export default function Landing() {
               Every one hours, India loses a student.
               <span className="block mt-2">MITRA saves them.</span>
             </h1>
+            <div className="mt-2 text-sm">A student lost in: <GlitchCounter start={28} /></div>
             <p className="mt-4 text-white/90">
               Early detection. Compassionate support. Parent coaching. Built
               with clinicians and validated by NIMHANS.
