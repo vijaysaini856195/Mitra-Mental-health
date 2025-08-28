@@ -48,7 +48,11 @@ const App = () => (
   </QueryClientProvider>
 );
 
-declare global { interface Window { __mitra_root__?: Root } }
+declare global {
+  interface Window {
+    __mitra_root__?: Root;
+  }
+}
 const container = document.getElementById("root")!;
 if (!window.__mitra_root__) {
   window.__mitra_root__ = createRoot(container);
