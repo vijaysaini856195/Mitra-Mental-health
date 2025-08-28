@@ -7,9 +7,17 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
-import Dashboard from "./pages/Dashboard";
-import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
+import Landing from "./pages/mitra/Landing";
+import ParentDashboard from "./pages/mitra/ParentDashboard";
+import RiskAnalysis from "./pages/mitra/RiskAnalysis";
+import StudentChat from "./pages/mitra/StudentChat";
+import StudentMoodTracker from "./pages/mitra/StudentMoodTracker";
+import CrisisSupport from "./pages/mitra/CrisisSupport";
+import ParentCoaching from "./pages/mitra/ParentCoaching";
+import AnalyticsReports from "./pages/mitra/AnalyticsReports";
+import SettingsPrivacy from "./pages/mitra/SettingsPrivacy";
+import Testimonials from "./pages/mitra/Testimonials";
 
 const queryClient = new QueryClient();
 
@@ -20,13 +28,17 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AppLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="journals" element={<Placeholder title="Journals" />} />
-            <Route path="trends" element={<Placeholder title="Mood Trends" />} />
-            <Route path="alerts" element={<Placeholder title="Alerts" />} />
-            <Route path="settings" element={<Placeholder title="Settings" />} />
-            <Route path="profile" element={<Placeholder title="Profile" />} />
+          <Route index element={<Landing />} />
+          <Route path="/app" element={<AppLayout />}>
+            <Route path="parent" element={<ParentDashboard />} />
+            <Route path="parent/risk" element={<RiskAnalysis />} />
+            <Route path="student/chat" element={<StudentChat />} />
+            <Route path="student/mood" element={<StudentMoodTracker />} />
+            <Route path="crisis" element={<CrisisSupport />} />
+            <Route path="coaching" element={<ParentCoaching />} />
+            <Route path="reports" element={<AnalyticsReports />} />
+            <Route path="settings" element={<SettingsPrivacy />} />
+            <Route path="testimonials" element={<Testimonials />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
