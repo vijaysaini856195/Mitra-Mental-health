@@ -11,7 +11,7 @@ export default function GlitchCounter({ start = 28 }: { start?: number }) {
     <span
       onMouseEnter={() => setGlitch(true)}
       onMouseLeave={() => setGlitch(false)}
-      className={`tabular-nums ${glitch ? 'animate-pulse' : ''}`}
+      className={`tabular-nums ${glitch ? "animate-pulse" : ""}`}
       data-cursor="text"
     >
       {n}

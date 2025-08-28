@@ -1,9 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-type Props = { children: React.ReactNode; intensity?: number; className?: string };
+type Props = {
+  children: React.ReactNode;
+  intensity?: number;
+  className?: string;
+};
 
-export default function ParallaxContainer({ children, intensity = 20, className }: Props) {
+export default function ParallaxContainer({
+  children,
+  intensity = 20,
+  className,
+}: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -16,12 +24,21 @@ export default function ParallaxContainer({ children, intensity = 20, className 
       const dy = (e.clientY - cy) / rect.height;
       el.querySelectorAll<HTMLElement>("[data-depth]").forEach((child) => {
         const d = parseFloat(child.dataset.depth || "0");
-        gsap.to(child, { x: dx * intensity * d, y: dy * intensity * d, duration: 0.4, overwrite: true });
+        gsap.to(child, {
+          x: dx * intensity * d,
+          y: dy * intensity * d,
+          duration: 0.4,
+          overwrite: true,
+        });
       });
     };
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
   }, [intensity]);
 
-  return <div ref={ref} className={className}>{children}</div>;
+  return (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  );
 }

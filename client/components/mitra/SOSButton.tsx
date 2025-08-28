@@ -11,8 +11,12 @@ export default function SOSButton() {
         className="rounded-full bg-red-600 hover:bg-red-700 text-white shadow-lg relative overflow-hidden"
         size="lg"
       >
-        <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity grid place-items-center text-xs">Need help now?</span>
-        <span className="group-hover:opacity-0 transition-opacity flex items-center"><AlertTriangle className="mr-2" /> SOS</span>
+        <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity grid place-items-center text-xs">
+          Need help now?
+        </span>
+        <span className="group-hover:opacity-0 transition-opacity flex items-center">
+          <AlertTriangle className="mr-2" /> SOS
+        </span>
       </Button>
     </div>
   );

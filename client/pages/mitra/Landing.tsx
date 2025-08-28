@@ -23,7 +23,12 @@ export default function Landing() {
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
   return (
-    <div className="min-h-screen relative text-white" style={{ background: `radial-gradient(circle at ${bgPos.x}% ${bgPos.y}%, #667eea, #764ba2)` }}>
+    <div
+      className="min-h-screen relative text-white"
+      style={{
+        background: `radial-gradient(circle at ${bgPos.x}% ${bgPos.y}%, #667eea, #764ba2)`,
+      }}
+    >
       <Cursor />
       <header className="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
         <div className="text-xl font-extrabold tracking-tight">MITRA</div>
@@ -58,7 +63,9 @@ export default function Landing() {
               Every one hours, India loses a student.
               <span className="block mt-2">MITRA saves them.</span>
             </h1>
-            <div className="mt-2 text-sm">A student lost in: <GlitchCounter start={28} /></div>
+            <div className="mt-2 text-sm">
+              A student lost in: <GlitchCounter start={28} />
+            </div>
             <p className="mt-4 text-white/90">
               Early detection. Compassionate support. Parent coaching. Built
               with clinicians and validated by NIMHANS.
