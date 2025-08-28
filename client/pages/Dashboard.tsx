@@ -40,7 +40,7 @@ export default function Dashboard() {
 
       <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         <StatCard title="Mood Score (today)" value="7.9/10" icon={<Smile className="text-brand-purple" />} trend="+0.4" />
-        <StatCard title="Journals Logged (this week)" value="12" icon={<NotebookPen className="text-brand-blue" />} trend="+3" />
+        <StatCard title="Journals Logged (this week)" value="12" icon={<NotebookText className="text-brand-blue" />} trend="+3" />
         <StatCard title="Positive vs Negative" value="68% / 32%" icon={<TrendingUp className="text-brand-green" />} />
         <StatCard title="Upcoming Check-in" value="Thu 4:30 PM" icon={<CalendarClock className="text-primary" />} />
       </section>
